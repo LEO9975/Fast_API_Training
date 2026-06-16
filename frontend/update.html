@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Update Recipe</title>
+
+</head>
+
+<body>
+
+<h2>Update Recipe</h2>
+
+<form action="/update/{{recipe.id}}" method="post">
+
+<input
+type="text"
+name="title"
+value="{{recipe.title}}"
+required>
+
+<br><br>
+
+<input
+type="text"
+name="category"
+value="{{recipe.category}}"
+required>
+
+<br><br>
+
+<textarea
+name="ingredients"
+required>{{recipe.ingredients}}</textarea>
+
+<br><br>
+
+<textarea
+name="instructions"
+required>{{recipe.instructions}}</textarea>
+
+<br><br>
+
+<button type="submit">
+
+Update
+
+</button>
+
+</form>
+
+<br>
+
+<a href="/">Back</a>
+
+</body>
+
+</html>

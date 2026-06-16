@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Recipe</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+            text-align:center;
+            width:400px;
+        }
+
+        .btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            color:white;
+            margin:10px;
+        }
+
+        .delete{
+            background:#e53935;
+        }
+
+        .cancel{
+            background:#757575;
+            text-decoration:none;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Delete Recipe</h2>
+
+    <p>
+        Are you sure you want to delete
+        <strong>{{ recipe.title }}</strong> ?
+    </p>
+
+    <button class="btn delete" onclick="deleteRecipe()">
+        Yes, Delete
+    </button>
+
+    <a href="/" class="btn cancel">
+        Cancel
+    </a>
+
+</div>
+
+<script>
+
+async function deleteRecipe() {
+
+    const recipeId = {{ recipe.id }};
+
+    const response = await fetch(`/recipe/${recipeId}`, {
+        method: "DELETE"
+    });
+
+    if(response.ok){
+        window.location.href = "/";
+    }
+    else{
+        alert("Failed to delete recipe");
+    }
+}
+
+</script>
+
+</body>
+</html>
