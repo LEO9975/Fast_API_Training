@@ -24,7 +24,7 @@ class Recipe(Base):
     __tablename__ = "recipes"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    title: Mapped[str] = mapped_column(String(100))
+    title: Mapped[str] = mapped_column(String(100), unique=True)
     category: Mapped[str] = mapped_column(String(50))
     ingredients: Mapped[str] = mapped_column(String(500))
     instructions: Mapped[str] = mapped_column(String(1000))
